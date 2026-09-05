@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar devolucion</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header th:replace="~{fragments/nav :: nav}"></header>
+
+<main class="contenedor">
+    <h1>Registrar devolucion</h1>
+    <p><strong>Recurso:</strong> <span th:text="${prestamo.recurso.nombre}"></span></p>
+    <p><strong>Responsable:</strong> <span th:text="${prestamo.responsable}"></span></p>
+    <p><strong>Fecha limite:</strong> <span th:text="${#temporals.format(prestamo.fechaLimite, 'dd/MM/yyyy HH:mm')}"></span></p>
+
+    <form th:action="@{/prestamos/{id}/devolver(id=${prestamo.id})}" method="post" class="formulario formulario-vertical">
+        <label>Estado final del equipo
+            <input type="text" name="estadoFinal" placeholder="Ej: Buen estado / Con danos" required>
+        </label>
+        <label>Observaciones
+            <textarea name="observaciones" placeholder="Opcional"></textarea>
+        </label>
+        <div class="acciones-formulario">
+            <button type="submit">Confirmar devolucion</button>
+            <a th:href="@{/prestamos}" class="boton-secundario">Cancelar</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

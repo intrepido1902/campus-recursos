@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Campus Recursos</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header th:replace="~{fragments/nav :: nav}"></header>
+
+<main class="contenedor">
+    <h1>Sistema de gestion de recursos del campus</h1>
+    <p>Prototipo de la primera entrega: catalogo, reservas, prestamos, incidentes y tablero basico.</p>
+
+    <div class="tarjetas-inicio">
+        <a th:href="@{/recursos}" class="tarjeta">
+            <h2>Recursos</h2>
+            <p>Consultar el catalogo, filtrar por categoria, ubicacion, tipo y estado.</p>
+        </a>
+        <a th:href="@{/reservas}" class="tarjeta">
+            <h2>Reservas</h2>
+            <p>Crear, consultar, modificar y cancelar reservas.</p>
+        </a>
+        <a th:href="@{/prestamos}" class="tarjeta">
+            <h2>Prestamos</h2>
+            <p>Registrar entregas y devoluciones de equipos.</p>
+        </a>
+        <a th:href="@{/incidentes}" class="tarjeta">
+            <h2>Incidentes</h2>
+            <p>Reportar danos o fallas sobre un recurso.</p>
+        </a>
+        <a th:href="@{/categorias}" class="tarjeta">
+            <h2>Categorias</h2>
+            <p>Administrar las categorias del catalogo.</p>
+        </a>
+        <a th:href="@{/ubicaciones}" class="tarjeta">
+            <h2>Ubicaciones</h2>
+            <p>Administrar las ubicaciones del campus.</p>
+        </a>
+        <a th:href="@{/tablero}" class="tarjeta tarjeta-destacada">
+            <h2>Tablero</h2>
+            <p>Ver el estado actual de los recursos y los indicadores basicos.</p>
+        </a>
+    </div>
+</main>
+</body>
+</html>

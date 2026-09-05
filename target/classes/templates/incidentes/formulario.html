@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reportar incidente</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header th:replace="~{fragments/nav :: nav}"></header>
+
+<main class="contenedor">
+    <h1>Reportar incidente</h1>
+
+    <!-- RN-04: si la severidad es CRITICA, el recurso se bloquea automaticamente
+         (ver IncidenteService). Aqui solo se recoge la informacion del formulario. -->
+    <form th:action="@{/incidentes}" method="post" class="formulario formulario-vertical">
+        <label>Recurso
+            <select name="recursoId" required>
+                <option th:each="r : ${recursos}" th:value="${r.id}" th:text="${r.nombre}"></option>
+            </select>
+        </label>
+        <label>Tipo de novedad
+            <select name="tipo" required>
+                <option th:each="t : ${tipos}" th:value="${t}" th:text="${t}"></option>
+            </select>
+        </label>
+        <label>Severidad
+            <select name="severidad" required>
+                <option th:each="s : ${severidades}" th:value="${s}" th:text="${s}"></option>
+            </select>
+        </label>
+        <label>Descripcion
+            <textarea name="descripcion" required></textarea>
+        </label>
+        <div class="acciones-formulario">
+            <button type="submit">Reportar</button>
+            <a th:href="@{/incidentes}" class="boton-secundario">Cancelar</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

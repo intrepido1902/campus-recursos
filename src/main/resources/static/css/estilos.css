@@ -1,0 +1,315 @@
+/* Hoja de estilos basica del prototipo.
+   No se usa ningun framework (Bootstrap, Tailwind, etc): solo las propiedades
+   de color, texto, cajas e interfaces vistas en el modulo de CSS del curso. */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f8;
+    color: #1f2933;
+}
+
+a {
+    color: #1d4ed8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navegacion */
+.nav-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f2937;
+    padding: 12px 24px;
+    flex-wrap: wrap;
+}
+
+.nav-marca a {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.nav-enlaces {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.nav-enlaces a {
+    color: #e5e7eb;
+}
+
+/* Contenedor general */
+.contenedor {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+h1 {
+    border-bottom: 2px solid #1d4ed8;
+    padding-bottom: 8px;
+}
+
+/* Tarjetas de la pagina de inicio y del tablero */
+.tarjetas-inicio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.tarjeta {
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 16px;
+    width: 220px;
+    color: inherit;
+    display: block;
+}
+
+.tarjeta:hover {
+    border-color: #1d4ed8;
+}
+
+.tarjeta-destacada {
+    background-color: #eff6ff;
+    border-color: #1d4ed8;
+}
+
+/* Formularios */
+.formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 16px 0;
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+.formulario-vertical {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 480px;
+}
+
+.formulario-vertical label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea,
+.formulario-vertical input,
+.formulario-vertical select,
+.formulario-vertical textarea {
+    padding: 8px;
+    border: 1px solid #9ca3af;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.formulario-vertical textarea {
+    min-height: 70px;
+}
+
+.acciones-formulario {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+button {
+    background-color: #1d4ed8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e40af;
+}
+
+.boton-principal {
+    display: inline-block;
+    background-color: #1d4ed8;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.boton-secundario {
+    display: inline-flex;
+    align-items: center;
+    color: #374151;
+}
+
+.boton-peligro {
+    background-color: #dc2626;
+}
+
+.boton-peligro:hover {
+    background-color: #b91c1c;
+}
+
+.form-inline {
+    display: inline;
+}
+
+/* Filtros */
+.filtro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 16px 0;
+}
+
+.filtro select {
+    padding: 6px;
+}
+
+/* Tablas */
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    margin-top: 8px;
+}
+
+.tabla th,
+.tabla td {
+    border: 1px solid #d1d5db;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.tabla th {
+    background-color: #e5e7eb;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85em;
+}
+
+.tabla tr:hover {
+    background-color: #f9fafb;
+}
+
+.acciones {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Etiquetas de estado */
+.etiqueta-estado {
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.85em;
+    color: white;
+}
+
+.estado-DISPONIBLE {
+    background-color: #16a34a;
+}
+
+.estado-RESERVADO {
+    background-color: #d97706;
+}
+
+.estado-PRESTADO {
+    background-color: #2563eb;
+}
+
+.estado-BLOQUEADO {
+    background-color: #dc2626;
+}
+
+.severidad-LEVE {
+    background-color: #16a34a;
+}
+
+.severidad-MEDIA {
+    background-color: #d97706;
+}
+
+.severidad-CRITICA {
+    background-color: #dc2626;
+}
+
+/* Alertas */
+.alerta {
+    padding: 10px 16px;
+    border-radius: 4px;
+    margin: 12px 0;
+}
+
+.alerta-exito {
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #16a34a;
+}
+
+.alerta-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #dc2626;
+}
+
+/* Tablero: barras simples para el indicador de reservas por recurso */
+.barras {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.fila-barra {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.etiqueta-barra {
+    width: 200px;
+}
+
+.barra-fondo {
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    flex-grow: 1;
+    height: 16px;
+}
+
+.barra-valor {
+    background-color: #1d4ed8;
+    height: 100%;
+    border-radius: 4px;
+}
+
+section {
+    margin-bottom: 32px;
+}

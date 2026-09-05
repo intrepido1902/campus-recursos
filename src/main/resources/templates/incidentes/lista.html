@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Incidentes</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header th:replace="~{fragments/nav :: nav}"></header>
+
+<main class="contenedor">
+    <h1>Incidentes</h1>
+    <div th:replace="~{fragments/mensajes :: mensajes}"></div>
+
+    <a th:href="@{/incidentes/nuevo}" class="boton-principal">+ Reportar incidente</a>
+
+    <table class="tabla">
+        <thead>
+        <tr>
+            <th>Recurso</th>
+            <th>Tipo</th>
+            <th>Severidad</th>
+            <th>Descripcion</th>
+            <th>Fecha</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="i : ${incidentes}">
+            <td th:text="${i.recurso.nombre}">Recurso</td>
+            <td th:text="${i.tipo}">Tipo</td>
+            <td>
+                <span class="etiqueta-estado" th:classappend="'severidad-' + ${i.severidad}" th:text="${i.severidad}">Severidad</span>
+            </td>
+            <td th:text="${i.descripcion}">Descripcion</td>
+            <td th:text="${#temporals.format(i.fecha, 'dd/MM/yyyy HH:mm')}">Fecha</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tablero</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header th:replace="~{fragments/nav :: nav}"></header>
+
+<main class="contenedor">
+    <h1>Tablero operativo</h1>
+
+    <!-- Requisito 4.f.i: tabla con los recursos y su estado actual -->
+    <section>
+        <h2>Estado actual de los recursos</h2>
+        <table class="tabla">
+            <thead>
+            <tr>
+                <th>Recurso</th>
+                <th>Categoria</th>
+                <th>Estado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="r : ${recursos}">
+                <td th:text="${r.nombre}">Recurso</td>
+                <td th:text="${r.categoria != null ? r.categoria.nombre : '-'}">Categoria</td>
+                <td><span class="etiqueta-estado" th:classappend="'estado-' + ${r.estado}" th:text="${r.estado}"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Requisito 4.f.ii: numero de reservas por recurso -->
+    <section>
+        <h2>Reservas por recurso</h2>
+        <div class="barras">
+            <div class="fila-barra" th:each="item : ${reservasPorRecurso}">
+                <span class="etiqueta-barra" th:text="${item.nombreRecurso}"></span>
+                <div class="barra-fondo">
+                    <div class="barra-valor" th:style="|width: ${item.total * 12 + 8}px|"></div>
+                </div>
+                <span th:text="${item.total}"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requisito 4.f.iii: indicador adicional -->
+    <section>
+        <h2>Otros indicadores</h2>
+        <div class="tarjetas-inicio">
+            <div class="tarjeta">
+                <h2 th:text="${devolucionesTardias}">0</h2>
+                <p>Devoluciones tardias</p>
+            </div>
+            <div class="tarjeta">
+                <h2 th:text="${totalIncidentes}">0</h2>
+                <p>Incidentes registrados</p>
+            </div>
+            <div class="tarjeta" th:each="entrada : ${incidentesPorSeveridad}">
+                <h2 th:text="${entrada.value}">0</h2>
+                <p th:text="'Incidentes ' + ${entrada.key}"></p>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

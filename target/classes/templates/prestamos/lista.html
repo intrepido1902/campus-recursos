@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Prestamos</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header th:replace="~{fragments/nav :: nav}"></header>
+
+<main class="contenedor">
+    <h1>Prestamos</h1>
+    <div th:replace="~{fragments/mensajes :: mensajes}"></div>
+
+    <a th:href="@{/prestamos/nuevo}" class="boton-principal">+ Registrar entrega</a>
+
+    <table class="tabla">
+        <thead>
+        <tr>
+            <th>Recurso</th>
+            <th>Responsable</th>
+            <th>Entrega</th>
+            <th>Fecha limite</th>
+            <th>Devolucion</th>
+            <th>Puntualidad</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${prestamos}">
+            <td th:text="${p.recurso.nombre}">Recurso</td>
+            <td th:text="${p.responsable}">Responsable</td>
+            <td th:text="${#temporals.format(p.fechaEntrega, 'dd/MM/yyyy HH:mm')}">Entrega</td>
+            <td th:text="${#temporals.format(p.fechaLimite, 'dd/MM/yyyy HH:mm')}">Limite</td>
+            <td th:text="${p.fechaDevolucion != null ? #temporals.format(p.fechaDevolucion, 'dd/MM/yyyy HH:mm') : 'Pendiente'}">Devolucion</td>
+            <td>
+                <span th:if="${!p.devuelto}">-</span>
+                <span th:if="${p.devuelto and p.tardio}" class="etiqueta-estado estado-BLOQUEADO">Tardia</span>
+                <span th:if="${p.devuelto and !p.tardio}" class="etiqueta-estado estado-DISPONIBLE">Puntual</span>
+            </td>
+            <td class="acciones">
+                <a th:if="${!p.devuelto}" th:href="@{/prestamos/{id}/devolver(id=${p.id})}">Registrar devolucion</a>
+                <span th:if="${p.devuelto}">-</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

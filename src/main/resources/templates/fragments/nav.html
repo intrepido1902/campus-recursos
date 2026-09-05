@@ -1,0 +1,17 @@
+<!-- Fragmento de navegacion. Thymeleaf permite reutilizar un bloque de HTML con
+     th:fragment y luego insertarlo en otras paginas con th:replace, en vez de
+     copiar el mismo menu en las 6 secciones del sistema. -->
+<nav th:fragment="nav" class="nav-principal">
+    <div class="nav-marca">
+        <a th:href="@{/}">Campus Recursos</a>
+    </div>
+    <ul class="nav-enlaces">
+        <li><a th:href="@{/recursos}">Recursos</a></li>
+        <li><a th:href="@{/reservas}">Reservas</a></li>
+        <li><a th:href="@{/prestamos}">Prestamos</a></li>
+        <li><a th:href="@{/incidentes}">Incidentes</a></li>
+        <li><a th:href="@{/categorias}">Categorias</a></li>
+        <li><a th:href="@{/ubicaciones}">Ubicaciones</a></li>
+        <li><a th:href="@{/tablero}">Tablero</a></li>
+    </ul>
+</nav>
